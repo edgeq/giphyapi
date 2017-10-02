@@ -9,13 +9,28 @@
 </head>
 <body>
 	<div class="container-fluid text-center">
-		<h1>Test! Maybe a header?</h1>
+		<h1>Button Gif Art</h1>
+		<p>Click on a button to load some artsy-fartsy GIFs.</p>
+		<p>Then click on each GIF to load some inspiration.</p>
 
-		<div class="container text-left text-muted" id="button-area">
-			<h2>Buttons go here</h2>
-		<!-- 	<button class="btn-info gif-btn" data-art="p5js">Generative Art</button>
-			<button class="btn-info gif-btn" data-art="architecture">Architecture</button>
-			<button class="btn-info gif-btn" data-art="surrealism">Surrealism</button> -->
+		<div class="container text-center text-muted col-md-9" id="button-area">
+			
+		</div>
+		<div class="panel col-md-2">
+
+			<div class="panel-body">
+					<h3>Add Art</h3>		
+			<!-- Artist Select Box -->
+				  <form id="artist-form">
+				    <!-- Label for Text Box -->
+				    <label for="art-input"></label>
+				    <!-- Text Input Box -->
+				    <input type="text" id="art-input"><br><br>
+				    <!-- Submit Button -->
+				    <input id="select-art" type="submit" value="GO!">
+				  </form>	
+			</div>
+		
 		</div>
 
 		<div class="container text-left text-muted" id="gifs-go-here">
@@ -25,70 +40,8 @@
 	</div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script type="text/javascript">
-//set an array of topics i want to GIPHIFY
-var btnTopics = ["p5js", "architecture", "surrealism", "brutalism", "postmodernism", "javascript art", "genreative art", "html canvas"];
-//set a loop that writes a button to the DOM for every item in my array.
-function btnLoop() {
-	for (var j = 0; j < btnTopics.length; j++) {
-		var newBtn = $("<button>");
-		newBtn.addClass("btn-info gif-btn");
-		newBtn.attr("data-art", btnTopics[j])
-		newBtn.text(btnTopics[j]);
-		$("#button-area").append(newBtn);
-	}
-}
-//run the button loop
-btnLoop();
-//ajax button click handler. When a button is clicked, use it's data-art attribute to search Giphy.
-$("button").on("click", function() {
-			//assign the button's "data-art" attribute to the art variable
-      var art = $(this).attr("data-art");
-      var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
-        art + "&api_key=dc6zaTOxFJmzC&limit=10";
+<script type="text/javascript" src="javascript/app.js">
 
-      $.ajax({
-        url: queryURL,
-        method: "GET"
-      }).done(function(response) {
-      	var results = response.data;
-        console.log(response.data);
-
-        for (var i = 0; i < results.length; i++) {
-          var gifDiv = $("<div>");
-
-          var rating = results[i].rating;
-
-          var p = $("<p>").text("Rating: " + rating);
-
-          var artImage = $("<img>");
-          artImage.attr("src", results[i].images.fixed_width_still.url);
-          artImage.attr("data-state", "still")
-          artImage.addClass("gif");
-
-          gifDiv.prepend(p);
-          gifDiv.prepend(artImage);
-
-          $("#gifs-go-here").prepend(gifDiv);
-
-        }
-      });
-
-      });
-//starting and stopping gifs
-$(".gif").on("click", function() {
-        var state = $(this).attr("data-state")
-        var animate = $(this).attr("src", images.fixed_width.url)
-
- if (state === "still") {
-          $(this).attr("src", $(this).attr("data-animate"));
-          $(this).attr("data-state", "animate")
-        }
-        if (state === "animate") {
-          $(this).attr("data-state", "still");
-          $(this).attr("src", $(this).attr("data-still") )
-        }
-    });	
 
 </script>
 </body>
