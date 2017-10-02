@@ -1,8 +1,7 @@
 # HOMEWORK APIs
-## MAKE AN ARRAY OF INTERESTING THINGS
+## MAKE AN ARRAY OF INTERESTING THINGS - Art Genres
 
 > Processing JS, p5js, javascript+art, generative+art, html+canvas,canvas+api, 
-> Architecture
+> Architecture, brutalism
+> Surrealism, post-modernism, 
 
-### Another Arrat of Interesting Things
->Architecture Styles
